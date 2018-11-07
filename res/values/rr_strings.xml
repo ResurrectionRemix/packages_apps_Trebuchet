@@ -15,4 +15,8 @@
 -->
 <resources>
     <string name="launcher_double_tap_summary">Double tap to sleep</string>
+
+    <string name="recent_task_option_kill_app">Kill</string>
+    <string name="recents_app_killed">App killed</string>
+
 </resources>
