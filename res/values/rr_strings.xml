@@ -14,7 +14,6 @@
      limitations under the License.
 -->
 <resources>
-    <string name="launcher_double_tap_summary">Double tap to sleep</string>
     <!-- General -->
     <string name="settings_title">Settings</string>
 
@@ -34,4 +33,14 @@
     <!-- Folder titles -->
     <string name="google_title" translatable="false">Google</string>
     <string name="play_folder_title">Play</string>
+
+    <!-- DT2S -->
+    <string name="launcher_double_tap_title">Double tap to sleep</string>
+    <string name="launcher_double_tap_summary">Double tap on empty space for power-off</string>
+ 
+     <!-- Gradients on Workspace/Hotseat -->
+    <string name="workspace_gradient_title">Show gradient on top</string>
+    <string name="workspace_gradient_summary">Enable a subtle gradient from the status bar</string>
+    <string name="hotseat_gradient_title">Show gradient on bottom</string>
+    <string name="hotseat_gradient_summary">Enable a subtle gradient from the launcher dock</string>
 </resources>

@@ -9,7 +9,22 @@
 
       <com.android.settings.rr.Preferences.SystemSettingSwitchPreference
             android:key="launcher_double_tap"
-            android:title="@string/launcher_double_tap_summary"
+            android:title="@string/launcher_double_tap_title"
+            android:summary="@string/launcher_double_tap_summary"
             android:defaultValue="false" />
+
+    <SwitchPreference
+        android:key="pref_show_workspace_grad"
+        android:title="@string/workspace_gradient_title"
+        android:summary="@string/workspace_gradient_summary"
+        android:defaultValue="true"
+        android:persistent="true"/>
+
+    <SwitchPreference
+        android:key="pref_show_hotseat_grad"
+        android:title="@string/hotseat_gradient_title"
+        android:summary="@string/hotseat_gradient_summary"
+        android:defaultValue="true"
+        android:persistent="true"/>
 
 </androidx.preference.PreferenceScreen> 
