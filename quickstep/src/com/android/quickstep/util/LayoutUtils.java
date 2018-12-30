@@ -43,11 +43,7 @@ public class LayoutUtils {
      * The height for the swipe up motion
      */
     public static float getDefaultSwipeHeight(Context context, DeviceProfile dp) {
-        float swipeHeight = dp.allAppsCellHeightPx - dp.allAppsIconTextSizePx;
-        if (SysUINavigationMode.getMode(context) == SysUINavigationMode.Mode.NO_BUTTON) {
-            swipeHeight -= dp.getInsets().bottom;
-        }
-        return swipeHeight;
+	return dp.hotseatCellHeightPx + dp.hotseatBarTopPaddingPx;
     }
 
     public static void calculateLauncherTaskSize(Context context, DeviceProfile dp, Rect outRect) {

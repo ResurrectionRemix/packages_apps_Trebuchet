@@ -162,8 +162,9 @@ public class OverviewState extends LauncherState {
     }
 
     public static float getDefaultVerticalProgress(Launcher launcher) {
+	DeviceProfile dp = launcher.getDeviceProfile();
         return 1 - (getDefaultSwipeHeight(launcher)
-                / launcher.getAllAppsController().getShiftRange());
+                / dp.availableHeightPx);
     }
 
     @Override

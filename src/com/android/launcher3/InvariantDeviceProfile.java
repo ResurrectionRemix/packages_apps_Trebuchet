@@ -96,7 +96,9 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
      * Number of icons per row and column in the workspace.
      */
     public int numRows;
+    public int numRowsOriginal;
     public int numColumns;
+    public int numColumnsOriginal;
 
     /**
      * Number of icons per row and column in the folder.
@@ -304,7 +306,9 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
             DisplayOption displayOption, DisplayMetrics metrics) {
         GridOption closestProfile = options.get(0).grid;
         numRows = closestProfile.numRows;
+        numRowsOriginal = numRows;
         numColumns = closestProfile.numColumns;
+        numColumnsOriginal = numColumns;
         numHotseatIcons = closestProfile.numHotseatIcons;
         defaultLayoutId = closestProfile.defaultLayoutId;
         demoModeLayoutId = closestProfile.demoModeLayoutId;
