@@ -125,6 +125,9 @@ public final class Utilities {
     public static final String SHOW_HOTSEAT_GRADIENT = "pref_show_hotseat_grad";
     public static final String SHOW_ONLY_RUNNING_APPS = "pref_only_show_running_in_recents";
     public static final String DESKTOP_SHOW_QUICKSPACE = "pref_show_quickspace";
+
+    public static final String KEY_SHOW_ALT_QUICKSPACE = "pref_show_alt_quickspace";
+
     /**
      * Indicates if the device has a debug build. Should only be used to store additional info or
      * add extra logging and not for changing the app behavior.
@@ -709,6 +712,10 @@ public final class Utilities {
     public static boolean showQuickspace(Context context) {
         SharedPreferences prefs = getPrefs(context.getApplicationContext());
         return prefs.getBoolean(DESKTOP_SHOW_QUICKSPACE, true);
+    }
+
+    public static boolean useAlternativeQuickspaceUI(Context context) {
+        return getPrefs(context).getBoolean(KEY_SHOW_ALT_QUICKSPACE, false);
     }
 
     public static void restart(final Context context) {
