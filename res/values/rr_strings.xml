@@ -32,7 +32,6 @@
 
     <!-- Folder titles -->
     <string name="google_title" translatable="false">Google</string>
-    <string name="play_folder_title">Play</string>
 
     <!-- DT2S -->
     <string name="launcher_double_tap_title">Double tap to sleep</string>
