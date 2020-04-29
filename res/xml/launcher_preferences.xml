@@ -53,18 +53,6 @@
             android:targetClass="com.android.launcher3.settings.SettingsAppDrawer" />
     </Preference>
 
-    <SwitchPreference
-        android:key="pref_drawer_show_labels"
-        android:title="@string/drawer_show_labels"
-        android:defaultValue="true"
-        android:persistent="true" />
-
-    <SwitchPreference
-        android:key="pref_show_labels_landscape"
-        android:title="@string/show_labels_landscape"
-        android:defaultValue="false"
-        android:persistent="true" />
-
     <Preference
         android:key="miscellaneous"
         android:title="@string/misc_category_title"
