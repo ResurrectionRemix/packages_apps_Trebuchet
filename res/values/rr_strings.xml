@@ -64,4 +64,9 @@
     <string name="icon_pack">Icon pack</string>
     <string name="icon_pack_summary">Select a custom icon pack</string>
     <string name="icon_pack_default">Default</string>
+
+    <!-- Only show running apps in recents -->
+    <string name="only_show_running_in_recents_title">Only show running apps in recents</string>
+    <string name="only_show_running_in_recents_desc">Exclude all non running applications from the recents view</string>
+
 </resources>

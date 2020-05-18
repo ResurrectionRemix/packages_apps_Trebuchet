@@ -18,4 +18,5 @@
 
 <resources>
     <bool name="allow_swipe_down_clearall">false</bool>
+    <bool name="only_show_running_in_recents">false</bool>
 </resources>

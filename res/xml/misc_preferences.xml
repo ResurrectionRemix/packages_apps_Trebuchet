@@ -19,6 +19,13 @@
         android:defaultValue="@bool/allow_swipe_down_clearall"
         android:persistent="true" />
 
+    <SwitchPreference      
+        android:key="pref_only_show_running_in_recents"
+        android:title="@string/only_show_running_in_recents_title"
+        android:summary="@string/only_show_running_in_recents_desc"
+        android:defaultValue="@bool/only_show_running_in_recents"
+        android:persistent="true" />
+
     <androidx.preference.PreferenceScreen
         android:key="pref_developer_options"
         android:persistent="false"

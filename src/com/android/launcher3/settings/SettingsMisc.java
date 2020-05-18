@@ -63,6 +63,7 @@ public class SettingsMisc extends Activity
     public static final String SAVE_HIGHLIGHTED_KEY = "android:preference_highlighted";
 
     public static final String KEY_TRUST_APPS = "pref_trust_apps";
+    public static final String KEY_ONLY_SHOW_RUNNING = "pref_only_show_running_in_recents";
 
     @Override
     protected void onCreate(final Bundle bundle) {
@@ -176,8 +177,11 @@ public class SettingsMisc extends Activity
                         });
                         return true;
                     });
-                    return true;
+		    break;
 
+		case KEY_ONLY_SHOW_RUNNING:
+		    preference.setDefaultValue(Utilities.showOnlyRunningApps(getContext()));
+		    break;
             }
             return true;
         }

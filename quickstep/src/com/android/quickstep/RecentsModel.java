@@ -72,7 +72,7 @@ public class RecentsModel extends TaskStackChangeListener {
         Looper looper =
                 createAndStartNewLooper("TaskThumbnailIconCache", THREAD_PRIORITY_BACKGROUND);
         mTaskList = new RecentTasksList(MAIN_EXECUTOR,
-                new KeyguardManagerCompat(context), ActivityManagerWrapper.getInstance());
+                new KeyguardManagerCompat(context), ActivityManagerWrapper.getInstance(), context);
         mIconCache = new TaskIconCache(context, looper);
         mThumbnailCache = new TaskThumbnailCache(context, looper);
         ActivityManagerWrapper.getInstance().registerTaskStackListener(this);
