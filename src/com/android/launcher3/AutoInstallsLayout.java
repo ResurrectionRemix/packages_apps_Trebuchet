@@ -44,6 +44,7 @@ import com.android.launcher3.LauncherProvider.SqlArguments;
 import com.android.launcher3.LauncherSettings.Favorites;
 import com.android.launcher3.icons.GraphicsUtils;
 import com.android.launcher3.icons.LauncherIcons;
+import com.android.launcher3.qsb.QsbContainerView;
 import com.android.launcher3.util.IntArray;
 import com.android.launcher3.util.PackageManagerHelper;
 import com.android.launcher3.util.Thunk;
@@ -119,6 +120,7 @@ public class AutoInstallsLayout {
     private static final String TAG_AUTO_INSTALL = "autoinstall";
     private static final String TAG_FOLDER = "folder";
     private static final String TAG_APPWIDGET = "appwidget";
+    protected static final String TAG_SEARCH_WIDGET = "searchwidget";
     private static final String TAG_SHORTCUT = "shortcut";
     private static final String TAG_EXTRA = "extra";
 
@@ -321,6 +323,7 @@ public class AutoInstallsLayout {
         parsers.put(TAG_AUTO_INSTALL, new AutoInstallParser());
         parsers.put(TAG_FOLDER, new FolderParser());
         parsers.put(TAG_APPWIDGET, new PendingWidgetParser());
+        parsers.put(TAG_SEARCH_WIDGET, new SearchWidgetParser());
         parsers.put(TAG_SHORTCUT, new ShortcutParser(mSourceRes));
         return parsers;
     }
@@ -541,6 +544,23 @@ public class AutoInstallsLayout {
             } else {
                 return insertedId;
             }
+        }
+    }
+
+    protected class SearchWidgetParser extends PendingWidgetParser {
+        @Override
+        @Nullable
+        public ComponentName getComponentName(XmlPullParser parser) {
+            return QsbContainerView.getSearchComponentName(mContext);
+        }
+
+        @Override
+        protected int verifyAndInsert(ComponentName cn, Bundle extras) {
+            mValues.put(Favorites.OPTIONS, LauncherAppWidgetInfo.OPTION_SEARCH_WIDGET);
+            int flags = mValues.getAsInteger(Favorites.RESTORED)
+                    | WorkspaceItemInfo.FLAG_RESTORE_STARTED;
+            mValues.put(Favorites.RESTORED, flags);
+            return super.verifyAndInsert(cn, extras);
         }
     }
 

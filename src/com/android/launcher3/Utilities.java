@@ -115,9 +115,6 @@ public final class Utilities {
     public static final boolean ATLEAST_OREO =
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.O;
 
-    public static final boolean ATLEAST_NOUGAT =
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
-
     private static final long WAIT_BEFORE_RESTART = 250;
 
     /**
@@ -126,7 +123,6 @@ public final class Utilities {
     public static final int EDGE_NAV_BAR = 1 << 8;
     public static final String SHOW_WORKSPACE_GRADIENT = "pref_show_workspace_grad";
     public static final String SHOW_HOTSEAT_GRADIENT = "pref_show_hotseat_grad";
-    public static final String SHOW_SHADE_GLANCE = "pref_show_shade_glance";
     public static final String SHOW_ONLY_RUNNING_APPS = "pref_only_show_running_in_recents";
     /**
      * Indicates if the device has a debug build. Should only be used to store additional info or
@@ -701,10 +697,6 @@ public final class Utilities {
 
     public static boolean showHotseatGradient(Context context) {
         return getPrefs(context).getBoolean(SHOW_HOTSEAT_GRADIENT, true);
-    }
-
-    public static boolean showShadeGlance(Context context) {
-        return getPrefs(context).getBoolean(SHOW_SHADE_GLANCE, true);
     }
 
     public static boolean showOnlyRunningApps(Context context) {

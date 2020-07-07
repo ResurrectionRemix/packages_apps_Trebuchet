@@ -29,7 +29,6 @@ import com.android.launcher3.ItemInfo;
 import com.android.launcher3.LauncherAppWidgetInfo;
 import com.android.launcher3.LauncherSettings;
 import com.android.launcher3.PromiseAppInfo;
-import com.android.launcher3.Utilities;
 import com.android.launcher3.WorkspaceItemInfo;
 import com.android.launcher3.Workspace;
 import com.android.launcher3.config.FeatureFlags;
@@ -137,7 +136,9 @@ public class BgDataModel {
                 screenSet.add(item.screenId);
             }
         }
-        screenSet.add(Workspace.FIRST_SCREEN_ID);
+        if (FeatureFlags.QSB_ON_FIRST_SCREEN || screenSet.isEmpty()) {
+            screenSet.add(Workspace.FIRST_SCREEN_ID);
+        }
         return screenSet.getArray();
     }
 

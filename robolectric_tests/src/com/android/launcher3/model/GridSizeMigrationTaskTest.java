@@ -10,7 +10,6 @@ import android.graphics.Point;
 
 import com.android.launcher3.InvariantDeviceProfile;
 import com.android.launcher3.LauncherSettings;
-import com.android.launcher3.Utilities;
 import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.config.FlagOverrideRule;
 import com.android.launcher3.model.GridSizeMigrationTask.MultiStepMigrationTask;
@@ -213,7 +212,7 @@ public class GridSizeMigrationTaskTest extends BaseGridChangesTestCase {
 
     @Test
     public void testWorkspace_first_row_blocked() throws Exception {
-        if (!Utilities.showShadeGlance(mContext)) {
+        if (!FeatureFlags.QSB_ON_FIRST_SCREEN) {
             return;
         }
         // The first screen has one item on the 4th column which needs moving, as the first row

@@ -113,7 +113,7 @@ import com.android.launcher3.model.ModelWriter;
 import com.android.launcher3.notification.NotificationListener;
 import com.android.launcher3.popup.PopupContainerWithArrow;
 import com.android.launcher3.popup.PopupDataProvider;
-import com.android.launcher3.shadespace.ShadespaceView;
+import com.android.launcher3.qsb.QsbContainerView;
 import com.android.launcher3.states.InternalStateHandler;
 import com.android.launcher3.states.RotationHelper;
 import com.android.launcher3.touch.ItemClickHandler;
@@ -295,8 +295,6 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
     private DeviceProfile mStableDeviceProfile;
     private RotationMode mRotationMode = RotationMode.NORMAL;
 
-    private ShadespaceView mShadespace;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         RaceConditionTracker.onEvent(ON_CREATE_EVT, ENTER);
@@ -381,8 +379,6 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
 
         // For handling default keys
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
-
-        mShadespace = findViewById(R.id.search_container_workspace);
 
         setContentView(mLauncherView);
         getRootView().dispatchInsets();
@@ -984,7 +980,6 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
 
         mHandler.removeCallbacks(mHandleDeferredResume);
         Utilities.postAsyncCallback(mHandler, mHandleDeferredResume);
-        if (mShadespace != null) mShadespace.onResume();
 
         if (!mOnResumeCallbacks.isEmpty()) {
             final ArrayList<OnResumeCallback> resumeCallbacks = new ArrayList<>(mOnResumeCallbacks);
@@ -1012,7 +1007,6 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
         mDragController.cancelDrag();
         mDragController.resetLastGestureUpTime();
         mDropTargetBar.animateToVisibility(false);
-        if (mShadespace != null) mShadespace.onPause();
         if (mLauncherCallbacks != null) {
             mLauncherCallbacks.onPause();
         }
@@ -1982,11 +1976,11 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
     @Override
     public void bindScreens(IntArray orderedScreenIds) {
         // Make sure the first screen is always at the start.
-        if (Utilities.showShadeGlance(this) &&
+        if (FeatureFlags.QSB_ON_FIRST_SCREEN &&
                 orderedScreenIds.indexOf(Workspace.FIRST_SCREEN_ID) != 0) {
             orderedScreenIds.removeValue(Workspace.FIRST_SCREEN_ID);
             orderedScreenIds.add(0, Workspace.FIRST_SCREEN_ID);
-        } else if (!Utilities.showShadeGlance(this) && orderedScreenIds.isEmpty()) {
+        } else if (!FeatureFlags.QSB_ON_FIRST_SCREEN && orderedScreenIds.isEmpty()) {
             // If there are no screens, we need to have an empty screen
             mWorkspace.addExtraEmptyScreen();
         }
@@ -2002,7 +1996,7 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
         int count = orderedScreenIds.size();
         for (int i = 0; i < count; i++) {
             int screenId = orderedScreenIds.get(i);
-            if (!Utilities.showShadeGlance(this) || screenId != Workspace.FIRST_SCREEN_ID) {
+            if (!FeatureFlags.QSB_ON_FIRST_SCREEN || screenId != Workspace.FIRST_SCREEN_ID) {
                 // No need to bind the first screen, as its always bound.
                 mWorkspace.insertNewWorkspaceScreenBeforeEmptyScreen(screenId);
             }
@@ -2162,6 +2156,14 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
     }
 
     private View inflateAppWidget(LauncherAppWidgetInfo item) {
+        if (item.hasOptionFlag(LauncherAppWidgetInfo.OPTION_SEARCH_WIDGET)) {
+            item.providerName = QsbContainerView.getSearchComponentName(this);
+            if (item.providerName == null) {
+                getModelWriter().deleteItemFromDatabase(item);
+                return null;
+            }
+        }
+
         if (mIsSafeModeEnabled) {
             PendingAppWidgetHostView view =
                     new PendingAppWidgetHostView(this, item, mIconCache, true);

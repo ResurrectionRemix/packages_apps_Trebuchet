@@ -15,13 +15,6 @@
             android:defaultValue="false" />
 
     <SwitchPreference
-        android:key="pref_show_shade_glance"
-        android:title="@string/show_shadeglance_title"
-        android:summary="@string/show_shadeglance_summary"
-        android:defaultValue="true"
-        android:persistent="true"/>
-
-    <SwitchPreference
         android:key="pref_show_workspace_grad"
         android:title="@string/workspace_gradient_title"
         android:summary="@string/workspace_gradient_summary"
