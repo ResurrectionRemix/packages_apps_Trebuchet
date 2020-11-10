@@ -265,7 +265,7 @@ public class QuickEventsController {
                 if (getLuckyNumber(13) == 7) {
                     psaLength = mPSARandomStr.length - 1;
                     mEventTitleSub = mPSARandomStr[getLuckyNumber(0, psaLength)];
-                    mEventSubIcon = R.drawable.ic_quickspace_crdroid;
+                    mEventSubIcon = R.drawable.ic_quickspace_rr;
                     mIsQuickEvent = true;
                     mEventPSA = true;
                     mImportantQuickEvent = false;

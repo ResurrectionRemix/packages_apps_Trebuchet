@@ -145,36 +145,38 @@
     </string-array>
 
     <string-array name="quickspace_psa_random">
-        <item>Ignorance is Bliss</item>
+        <item>Randomize summary</item>
         <item>Is it time to flash another update already?</item>
-        <item>Hyped about Android 10?</item>
+        <item>Enjoying Android 10?</item>
         <item>Oh hey, what\'s up?</item>
-        <item>Focus on your tasks</item>
+        <item>Did you checkout all the tweaks?</item>
         <item>How many screenshots do you take?</item>
-        <item>Open goodness with crDroid</item>
-        <item>Spread love not havoc</item>
+        <item>Breaking News: Donald Trump changes his hair style!</item>
         <item>Have fun!</item>
-        <item>Time for some good music</item>
+        <item>You have tapped almost a 100k times.</item>
         <item>\u003C\u003C\u003C\u003C\u003C\u003C\u003C HEAD</item>
-        <item>You need crDroid Premium to see this</item>
-        <item>Remember the Lineage of the Unicorn</item>
-        <item>Enjoy Xtended battery life</item>
-        <item>Starting from the ground zero</item>
-        <item>We love you 3000</item>
+        <item>Lots of options!</item>
+        <item>I am not your F1 button</item>
+        <item>Don\'t pass me!</item>
+        <item>Did you finish your homework? ツ</item>
         <item>Stay Home, Stay Safe</item>
-        <item>Do something nice today</item>
-        <item>This is best Pixel Experience, isn\'t it?</item>
+        <item>Having flu symptoms? Get tested!</item>
+        <item>This is best ROM Experience, isn\'t it?</item>
         <item>How is everything going?</item>
-        <item>No illusions, welcome to reality!</item>
+        <item>Well done! You have earned a bonus feature</item>
         <item>Thank you for your support</item>
-        <item>No festival for Derps - only perfection!</item>
+        <item>Breaking News: Apple will remove flash lights from the next iPhones</item>
         <item>One of the buildbot\'s best picks</item>
-        <item>Sanity for your Paranoia</item>
-        <item>Try Ice Cold desserts</item>
+        <item>That\'s enough, stop tapping me!</item>
+        <item>Only for pro users</item>
         <item>What a lovely experience, isn\'t it?</item>
-        <item>Evolution is a myth, right?</item>
-        <item>You are what you flash, don\'t be Potato</item>
+        <item>#Swagger</item>
+        <item>ツ</item>
+        <item>#GETRESURRECTED</item>
+        <item>#GETRESURRECTED \m/</item>
+        <item>#RROS FTW \m/</item>
         <item>What\'s on your mind?</item>
+        <item>Got an issue? Don\'t forget a logcat</item>
         <item>Winner Winner ....?</item>
         <item>rm -rf \/</item>
     </string-array>
