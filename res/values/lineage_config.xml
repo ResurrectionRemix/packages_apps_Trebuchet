@@ -16,7 +16,4 @@
 <resources>
 
     <string name="pref_show_google_now_summary" translatable="false">@string/msg_minus_one_on_left</string>
-
-    <!-- Icon pack -->
-    <string name="icon_pack_settings_class" translatable="false">com.android.launcher3.lineage.icon.IconPackSettingsFragment</string>
 </resources>
