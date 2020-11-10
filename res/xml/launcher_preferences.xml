@@ -92,6 +92,11 @@
             android:defaultValue="true"
             android:persistent="true" />
 
+      <com.android.settings.rr.Preferences.SystemSettingSwitchPreference
+            android:key="launcher_double_tap"
+            android:title="@string/launcher_double_tap_summary"
+            android:defaultValue="false" />
+
         <SwitchPreference
             android:key="pref_show_labels_landscape"
             android:title="@string/show_labels_landscape"

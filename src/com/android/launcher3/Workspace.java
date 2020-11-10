@@ -61,7 +61,7 @@ import android.view.ViewTreeObserver;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Toast;
 
-import com.android.internal.util.bliss.BlissUtils;
+import com.android.internal.util.rr.Utils;
 
 import com.android.launcher3.Launcher.LauncherOverlay;
 import com.android.launcher3.LauncherAppWidgetHost.ProviderChangedListener;
@@ -104,6 +104,7 @@ import com.android.launcher3.widget.LauncherAppWidgetHostView;
 import com.android.launcher3.widget.PendingAddShortcutInfo;
 import com.android.launcher3.widget.PendingAddWidgetInfo;
 import com.android.launcher3.widget.PendingAppWidgetHostView;
+import android.provider.Settings;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -253,6 +254,7 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
     private final WorkspaceStateTransitionAnimation mStateTransitionAnimation;
 
     private GestureDetector mGestureListener;
+    private boolean mDoubleTapEnabled;
 
     /**
      * Used to inflate the Workspace from XML.
@@ -285,13 +287,18 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
 
         // Disable multitouch across the workspace/all apps/customize tray
         setMotionEventSplittingEnabled(true);
+        mDoubleTapEnabled = Settings.System.getInt(
+                    mContext.getContentResolver(), Settings.System.LAUNCHER_DOUBLE_TAP, 0) == 1;
 
         mGestureListener =
                 new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
-                BlissUtils.switchScreenOff(context);
-                return true;
+                if (mDoubleTapEnabled) {
+                    Utils.switchScreenOff(context);
+                    return true;
+                }
+                return false;
             }
         });
 
