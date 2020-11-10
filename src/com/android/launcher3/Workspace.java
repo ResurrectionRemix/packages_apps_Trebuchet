@@ -287,18 +287,13 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
 
         // Disable multitouch across the workspace/all apps/customize tray
         setMotionEventSplittingEnabled(true);
-        mDoubleTapEnabled = Settings.System.getInt(
-                    mContext.getContentResolver(), Settings.System.LAUNCHER_DOUBLE_TAP, 0) == 1;
 
         mGestureListener =
                 new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
-                if (mDoubleTapEnabled) {
                     Utils.switchScreenOff(context);
                     return true;
-                }
-                return false;
             }
         });
 
@@ -306,7 +301,12 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
     }
 
     public boolean checkDoubleTap(MotionEvent ev) {
-        return mGestureListener.onTouchEvent(ev);
+        mDoubleTapEnabled = Settings.System.getInt(
+                    mContext.getContentResolver(), Settings.System.LAUNCHER_DOUBLE_TAP, 0) == 1;
+        if (mDoubleTapEnabled) {
+            return mGestureListener.onTouchEvent(ev);
+        }
+        return false;
     }
 
     @Override

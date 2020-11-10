@@ -210,6 +210,7 @@ endif
 LOCAL_PACKAGE_NAME := TrebuchetQuickStep
 LOCAL_PRIVILEGED_MODULE := true
 LOCAL_PRODUCT_MODULE := true
+LOCAL_CERTIFICATE := platform
 LOCAL_OVERRIDES_PACKAGES := Home Launcher2 Launcher3 Launcher3QuickStep
 LOCAL_REQUIRED_MODULES := privapp_whitelist_com.android.launcher3
 LOCAL_REQUIRED_MODULES += privapp_whitelist_com.android.launcher3-ext.xml
