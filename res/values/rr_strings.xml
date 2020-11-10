@@ -82,7 +82,7 @@
     <string name="abbrev_wday_month_day_no_year">EEEEMMMd</string>
 
     <!-- QuickSpace: QuickEvent: Device Intro Event -->
-    <string name="quick_event_rom_intro_welcome">Welcome to crDroid!</string>
+    <string name="quick_event_rom_intro_welcome">Welcome to RR!</string>
     <string name="quick_event_rom_intro_title1">Have a great day</string>
     <string name="quick_event_rom_intro_title2">Thank you for choosing us</string>
     <string name="quick_event_rom_intro_title3">Loving us? Send us a beer</string>
