@@ -39,11 +39,11 @@
         android:defaultValue="true"
         android:persistent="true"/>
 
-      <com.android.settings.rr.Preferences.SystemSettingSwitchPreference
-            android:key="launcher_double_tap"
-            android:title="@string/launcher_double_tap_title"
-            android:summary="@string/launcher_double_tap_summary"
-            android:defaultValue="false" />
+    <com.android.settings.rr.Preferences.SystemSettingSwitchPreference
+        android:key="launcher_double_tap"
+        android:title="@string/launcher_double_tap_title"
+        android:summary="@string/launcher_double_tap_summary"
+        android:defaultValue="false" />
 
     <SwitchPreference
         android:key="pref_show_workspace_grad"
