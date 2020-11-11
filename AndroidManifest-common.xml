@@ -214,7 +214,7 @@
         <activity
             android:name="com.android.launcher3.settings.SettingsHomescreen"
             android:label="@string/home_category_title"
-            android:theme="@style/HomeSettingsTheme"
+            android:theme="@style/HomeSettingsTheme2"
             android:autoRemoveFromRecents="true"
             android:parentActivityName="com.android.launcher3.settings.SettingsActivity" />
 
