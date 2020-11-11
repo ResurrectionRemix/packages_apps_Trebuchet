@@ -136,6 +136,20 @@
         <item name="allowDividerBelow">false</item>
     </style>
 
+    <style name="HomeSettingsTheme2" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorPrimary">@*android:color/primary_dark_material_settings</item>
+        <item name="colorPrimaryDark">@*android:color/primary_dark_material_settings</item>
+        <item name="colorAccent">@*android:color/accent_material_light</item>
+        <item name="snackbarStyle">@style/SnackBarStyle</item>
+    </style>
+
+    <!-- snackbar style in res/values -->
+    <style name="SnackBarStyle" parent="Widget.MaterialComponents.Snackbar">
+       <item name="android:background">#5a595b</item>
+       <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
+
     <!--
     Theme overrides to element on homescreen, i.e., which are drawn on top on wallpaper.
     Various foreground colors are overridden to be workspaceTextColor so that they are properly

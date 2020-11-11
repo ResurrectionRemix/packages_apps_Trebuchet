@@ -23,7 +23,10 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.provider.Settings;
 import android.text.TextUtils;
 
@@ -36,6 +39,7 @@ import com.android.launcher3.lineage.LineageLauncherCallbacks;
 import com.android.launcher3.lineage.LineageUtils;
 import com.android.launcher3.uioverrides.plugins.PluginManagerWrapper;
 import com.android.launcher3.util.SecureSettingsObserver;
+import android.os.Process;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
@@ -44,6 +48,8 @@ import androidx.preference.PreferenceFragment.OnPreferenceStartScreenCallback;
 import androidx.preference.PreferenceGroup.PreferencePositionCallback;
 import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * Settings activity for Launcher. Currently implements the following setting: Allow rotation
@@ -75,15 +81,45 @@ public class SettingsHomescreen extends Activity
             case Utilities.SHOW_WORKSPACE_GRADIENT:
             case Utilities.SHOW_HOTSEAT_GRADIENT:
             case Utilities.DESKTOP_SHOW_QUICKSPACE:
+                 showSnackBar();
+                break;
             case Utilities.KEY_SHOW_ALT_QUICKSPACE:
+                 showSnackBar();
+                break;
             case Utilities.KEY_SHOW_QUICKSPACE_NOWPLAYING:
             case Utilities.KEY_SHOW_QUICKSPACE_PSONALITY:
                 LauncherAppState.getInstanceNoCreate().setNeedsRestart();
+                showSnackBar();
                 break;
             default:
                 break;
         }
     }
+
+    private void showSnackBar() {
+         View rootView = findViewById(android.R.id.content);
+         if (rootView != null) {
+             Snackbar snackbar  =Snackbar.make(rootView,
+                 R.string.restart_archived, Snackbar.LENGTH_LONG);
+             snackbar.setAction(R.string.restart_warning, new RestartLauncher())
+                .setActionTextColor(getApplicationContext().getResources().getColor(com.android.internal.R.color.accent_device_default_light))
+                .show();
+                //Change the Snackbar default text color
+                View snackbarView = snackbar.getView();
+                TextView tv = (TextView) snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
+                tv.setTextColor(Color.WHITE);
+        
+          }
+    }
+
+   public class RestartLauncher implements View.OnClickListener {
+
+       @Override
+       public void onClick(View v) {
+          Process.killProcess(Process.myPid());
+       }
+    }
+
 
     private boolean startFragment(String fragment, Bundle args, String key) {
         if (Utilities.ATLEAST_P && getFragmentManager().isStateSaved()) {

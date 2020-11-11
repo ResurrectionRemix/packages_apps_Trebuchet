@@ -26,7 +26,8 @@
     <string name="app_drawer_category_summary">Customize your app drawer</string>
     <string name="misc_category_title">Miscellaneous</string>
     <string name="misc_category_summary">Other options</string>
-
+    <string name="restart_warning">Restart launcher</string>
+    <string name="restart_archived">A launcher restart is required to trigger this change</string>
     <string name="recent_task_option_kill_app">Kill</string>
     <string name="recents_app_killed">App killed</string>
 
